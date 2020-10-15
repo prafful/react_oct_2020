@@ -3,10 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const name = "Prafful Daga"
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <p>{name}</p>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

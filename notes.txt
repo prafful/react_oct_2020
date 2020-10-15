@@ -1,0 +1,22 @@
+https://www.w3schools.com/js/js_htmldom.asp
+
+https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
+https://reactjs.org/docs/faq-internals.html
+
+https://www.kirupa.com/react/introducing_react.htm
+
+
+https://create-react-app.dev/docs/getting-started/
+
+npm i -g create-react-app
+
+create-react-app myapp
+cd myapp
+
+npm start
+u may explore index.html, index.js and app.js
+
+https://www.youtube.com/watch?v=0twjvW0c1r0
+
+
+
