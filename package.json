@@ -1,20 +1,35 @@
 {
+<<<<<<< HEAD
   "name": "myfirstreactapp",
+=======
+  "name": "friend_spa",
+>>>>>>> 3fcf3b8ef6e430ce16711936ba3f6f7dbca55927
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+<<<<<<< HEAD
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+=======
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+>>>>>>> 3fcf3b8ef6e430ce16711936ba3f6f7dbca55927
     "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+<<<<<<< HEAD
     "eject": "react-scripts eject"
+=======
+    "eject": "react-scripts eject",
+    "launch":"npm start"
+
+>>>>>>> 3fcf3b8ef6e430ce16711936ba3f6f7dbca55927
   },
   "eslintConfig": {
     "extends": "react-app"
