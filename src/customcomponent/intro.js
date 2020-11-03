@@ -7,8 +7,9 @@ class Introduction extends React.Component {
     
     applyNow = {
         "color":"purple",
-        "fontSize":"22px",
-        "border":"1px dashed blue"
+        "fontSize":"32px",
+        "border":"1px dashed blue",
+        "backgroundColor": "burlywood"
     }
     
     //normal functions
@@ -21,17 +22,21 @@ class Introduction extends React.Component {
     }
     //arrow functions
     threeWay = ()=>{
+        console.log(this);
         console.log(this.props);
         return "Wow, four-lane expressway!!!!"
     }
 
+    fourWay = ()=>{
+        console.log("Four Lane Highway!!!!");
+    }
     
 
     render() { 
         return ( 
             <span>
                 <div>
-                    <h1>{this.props.children}</h1>
+                    <h1>Children: {this.props.children}</h1>
                 </div>
                 <div>
                      Hello, {this.username}:    <h1>{this.message} and {this.props.msg}</h1>
@@ -48,9 +53,16 @@ class Introduction extends React.Component {
                 <span style={{"color":"green"}}>asdasd</span>
                 <span>asdsad</span>
                 <div>div 1
-                    <span style={{"color":"blue", "border":"1px solid red"}}>div1.1</span>
+                    <span style={{
+                                "color":"blue", 
+                                "border":"4px solid red",
+                                "backgroundColor":"pink"
+                                }}>div 1.1
+                    </span>
                 </div>
                 <div style={this.applyNow}>div2</div>
+                <br></br>
+                <button onClick={this.fourWay}>Catch Me!!!!</button>
                 <hr></hr>
             </span>
 
