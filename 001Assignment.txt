@@ -1,0 +1,1 @@
+Change remote.js and user.js to render table with heading for list of users received as response.

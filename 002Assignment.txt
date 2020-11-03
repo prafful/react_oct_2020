@@ -1,0 +1,8 @@
+Implement layout prescribed in 000layout.png for review component! use flexbox to implement the layout.
+
+Ref for flexbox: 
+
+https://www.youtube.com/playlist?list=PLC3y8-rFHvwg6rjbiMadCILrjh7QkvzoQ
+https://www.youtube.com/watch?v=JJSoEo8JSnc
+https://www.youtube.com/playlist?list=PL4cUxeGkcC9i3FXJSUfmsNOx8E7u6UuhG
+https://www.youtube.com/playlist?list=PLRAV69dS1uWSZJXa62hmOUKLnOZqxYrn9
