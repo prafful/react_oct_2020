@@ -44,7 +44,7 @@ class Introduction extends React.Component {
                 <div>
                     <h1>
                         {this.oneWay()} {this.twoWay()} {this.threeWay()}
-                        I am on {this.props.lane} highway!!!!
+                        I am on {this.props.lane} lane highway!!!!
                     
                     </h1>
                 </div>

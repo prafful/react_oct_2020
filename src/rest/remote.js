@@ -16,7 +16,7 @@ class RemoteData extends React.Component {
     }
 
     getRemoteUsers=()=>{
-        axios.get("https://jsonplaceholder.typicode.com/users")
+        axios.get("http://localhost:1234/allfriends")
              .then((response)=>{
                  console.log(response.data)
                  console.log(this.state.users)
@@ -34,9 +34,8 @@ class RemoteData extends React.Component {
                return(
                    <User id={eachuser.id}
                         name={eachuser.name}
-                        email={eachuser.email}
-                        latitude={eachuser.address.geo.lat}
-                        longitude={eachuser.address.geo.lng}
+                        loc={eachuser.location}
+                        year={eachuser.years}
                    >
                    </User>
                )
@@ -76,6 +75,7 @@ class RemoteData extends React.Component {
     render() { 
         return (  
             <div>
+                <button>Add New Friend....</button>
                 <h3>Get users....</h3>
                 {this.displayUsers()}
             </div>

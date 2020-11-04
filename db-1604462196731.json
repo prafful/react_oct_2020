@@ -1,0 +1,16 @@
+{
+  "allfriends": [
+    {
+      "id": 1,
+      "name": "OBB",
+      "location": "Chennai",
+      "years": 4
+    },
+    {
+      "id": 2,
+      "name": "CAS",
+      "location": "Chennai",
+      "years": 2
+    }
+  ]
+}

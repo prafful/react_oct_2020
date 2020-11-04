@@ -10,12 +10,14 @@ class User extends React.Component {
                 <br></br>
                 Name: {this.props.name}
                 <br></br>
-                Email: {this.props.email}
+                Location: {this.props.loc}
                 <br></br>
-                Latitude: {this.props.latitude}
+                Years: {this.props.year}
                 <br></br>
-                Longitude: {this.props.longitude}
-                <br></br>
+                <button>Edit</button> 
+                &nbsp; 
+                <button>Delete</button>
+
                 <hr></hr>
             </div>
          );
