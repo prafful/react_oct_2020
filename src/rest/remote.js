@@ -7,7 +7,9 @@ class RemoteData extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            users:[]
+            users:[],
+            displayForm: false,
+            name:''
         }
     }
 
@@ -32,7 +34,7 @@ class RemoteData extends React.Component {
         return (
             this.state.users.map(eachuser =>{
                return(
-                   <User id={eachuser.id}
+                   <User key={eachuser.id}
                         name={eachuser.name}
                         loc={eachuser.location}
                         year={eachuser.years}
@@ -70,12 +72,48 @@ class RemoteData extends React.Component {
         console.log(error);
     } */
 
-    
+    toggleDisplayAddFriendForm=()=>{
+        this.setState({
+            displayForm: !this.state.displayForm
+        })
+    }
+
+    captureName=(event)=>{
+        //console.log(event)
+        //console.log(event.target)
+        console.log(event.target.value)
+        this.setState({
+            name: event.target.value
+        })
+    }
+
+    displayFriendForm=()=>{
+        if(this.state.displayForm){
+            console.log("displayForm is: "  + this.state.displayForm)
+            return(
+                <div>
+                    <form>
+                        Name: <input type="text" onChange={this.captureName}></input>
+                        {this.state.name}
+                        <br></br>
+                        Location: <input type="text"></input>
+                        <br></br>
+                        Years: <input type="number"></input>
+                        <br></br>
+                        <button>Add</button>
+                    </form>
+                </div>
+            )
+        }
+    }
     
     render() { 
         return (  
             <div>
-                <button>Add New Friend....</button>
+                <button onClick={this.toggleDisplayAddFriendForm}>Add New Friend....</button>
+                <br></br>
+                <br></br>
+                {this.displayFriendForm()}
                 <h3>Get users....</h3>
                 {this.displayUsers()}
             </div>
