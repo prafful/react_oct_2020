@@ -29,6 +29,12 @@ class User extends React.Component {
                  <td>
                 <button onClick={this.getIdForDelete}>Delete</button>
                 </td>
+                <td>
+                     &nbsp;  <button>+</button> &nbsp;
+                </td>
+                <td>
+                     &nbsp;  <button>-</button> &nbsp;
+                </td>
 
                
             </tr>

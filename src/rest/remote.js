@@ -284,7 +284,7 @@ class RemoteData extends React.Component {
                             <th>Name</th>
                             <th>Location</th>
                             <th>Years</th>
-                            <th colSpan="2">Action</th>
+                            <th colSpan="4">Action</th>
                         </tr>
                     </thead>
                     <tbody>
