@@ -8,10 +8,15 @@ class RemoteData extends React.Component {
         super(props)
         this.state ={
             users:[],
-            displayForm: false,
+            displayAddForm: false,
+            displayEditForm: false,
             name:'',
             location:'',
-            years:0
+            years:0,
+            editId:0,
+            editName:'',
+            editLocation:'',
+            editYears:0
         }
     }
 
@@ -33,7 +38,7 @@ class RemoteData extends React.Component {
      }
 
      deleteFriendWithId=(id)=>{
-         console.log("I am called from child component!!!! for id: " + id)
+         console.log("Delete-I am called from child component!!!! for id: " + id)
          axios.delete("http://localhost:1234/allfriends" + "/" + id)
                 .then(response=>{
                     console.log(response)
@@ -42,6 +47,28 @@ class RemoteData extends React.Component {
                 .catch(error=>{
                     console.log(error)
                 })
+     }
+
+     displayFriendWithId=(id)=>{
+        console.log("Edit-I am called from child component!!!! for id: " + id)
+        axios.get("http://localhost:1234/allfriends" + "/" + id)
+                .then(response=>{
+                    this.setState({
+                        editId:response.data.id,
+                        editName: response.data.name,
+                        editLocation:response.data.location,
+                        editYears:response.data.years
+                    })
+                    this.setState({
+                        displayEditForm: true
+                    })
+
+                    console.log(this.state)
+                })
+                .catch(error=>{
+                    console.log(error)
+                })
+
      }
 
      displayUsers=()=>{
@@ -54,7 +81,8 @@ class RemoteData extends React.Component {
                                 name={eachuser.name}
                                 loc={eachuser.location}
                                 year={eachuser.years}
-                                getIdFromUserComponent={this.deleteFriendWithId}
+                                getIdFromUserComponentForDelete={this.deleteFriendWithId}
+                                getIdFromUserComponentForEdit={this.displayFriendWithId}
                         >
                         </User>
                
@@ -92,7 +120,7 @@ class RemoteData extends React.Component {
 
     toggleDisplayAddFriendForm=()=>{
         this.setState({
-            displayForm: !this.state.displayForm
+            displayAddForm: !this.state.displayAddForm
         })
     }
 
@@ -100,23 +128,47 @@ class RemoteData extends React.Component {
         //console.log(event)
         //console.log(event.target)
         console.log(event.target.value)
-        this.setState({
-            name: event.target.value
-        })
+        if(this.state.displayAddForm){
+            this.setState({
+                name: event.target.value
+            })
+        }
+        if(this.state.displayEditForm){
+            this.setState({
+                editName: event.target.value
+            })
+        }
+        
     }
 
     captureLocation = (event)=>{
         console.log(event.target.value)
-        this.setState({
-            location: event.target.value
-        })
+        if(this.displayAddFriendForm){
+            this.setState({
+                location: event.target.value
+            })
+        }
+        if(this.displayEditFriendForm){
+            this.setState({
+                editLocation: event.target.value
+            })
+        }
+       
     }
 
     captureYears = (event)=>{
         console.log(event.target.value)
-        this.setState({
-            years: event.target.value
-        })
+        if(this.state.displayAddForm){
+            this.setState({
+                years: event.target.value
+            })
+        }
+        if(this.state.displayEditForm){
+            this.setState({
+                editYears: event.target.value
+            }) 
+        }
+        
     }
 
     postFriend =(event)=>{
@@ -134,7 +186,7 @@ class RemoteData extends React.Component {
                         name:'',
                         location:'',
                         years:0,
-                        displayForm: false
+                        displayAddForm: false
                     })
                     this.getRemoteUsers()
                 })
@@ -144,9 +196,34 @@ class RemoteData extends React.Component {
 
     }
 
-    displayFriendForm=()=>{
-        if(this.state.displayForm){
-            console.log("displayForm is: "  + this.state.displayForm)
+    updateFriend=(event)=>{
+        event.preventDefault()
+        console.log("Update friend to rest api!!!! wid id: " + this.state.editId)
+        var editfriend = {
+            "name": this.state.editName,
+            "location": this.state.editLocation,
+            "years": this.state.editYears
+        }
+        axios.put("http://localhost:1234/allfriends"+ "/" + this.state.editId, editfriend)
+            .then(response=>{
+                console.log(response)
+                this.getRemoteUsers()
+                this.setState({
+                    editId:0,
+                    editName:'',
+                    editLocation:'',
+                    editYears:0,
+                    displayEditForm:false
+                })
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
+    displayAddFriendForm=()=>{
+        if(this.state.displayAddForm){
+            console.log("displayForm is: "  + this.state.displayAddForm)
             return(
                 <div>
                     <form>
@@ -165,14 +242,40 @@ class RemoteData extends React.Component {
             )
         }
     }
+
+
+    displayEditFriendForm=()=>{
+        if(this.state.displayEditForm){
+            console.log("displayForm is: "  + this.state.displayEditForm)
+            return(
+                <div>
+                    <form>
+                        Id: {this.state.editId}
+                        <br></br>
+                        Name: <input type="text"  value={this.state.editName} onChange={this.captureName}></input>
+                        {this.state.editName}
+                        <br></br>
+                        Location: <input type="text" value={this.state.editLocation} onChange={this.captureLocation}></input>
+                        {this.state.editLocation}
+                        <br></br>
+                        Years: <input type="number" value={this.state.editYears} onChange={this.captureYears}></input>
+                        {this.state.editYears}
+                        <br></br>
+                        <button onClick={this.updateFriend}>Edit</button>
+                    </form>
+                </div>
+            )
+        }
+    }
     
     render() { 
         return (  
             <div>
                 <button onClick={this.toggleDisplayAddFriendForm}>Add New Friend....</button>
                 <br></br>
+                {this.displayAddFriendForm()}
                 <br></br>
-                {this.displayFriendForm()}
+                {this.displayEditFriendForm()}
                 <h3>Get users....</h3>
                 <table border="1">
                     <thead>

@@ -1,10 +1,10 @@
 {
   "allfriends": [
     {
-      "id": 1,
-      "name": "OBB",
-      "location": "Chennai",
-      "years": 4
+      "name": "OBBOO",
+      "location": "Chennaiiii",
+      "years": "4",
+      "id": 1
     },
     {
       "id": 2,
@@ -25,9 +25,9 @@
       "id": 4
     },
     {
-      "name": "TPT",
-      "location": "Delhi",
-      "years": "2",
+      "name": "Tea",
+      "location": "Tea Chowk",
+      "years": "9",
       "id": 5
     },
     {

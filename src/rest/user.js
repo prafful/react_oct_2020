@@ -5,7 +5,12 @@ class User extends React.Component {
 
     getIdForDelete=()=>{
         console.log("Delete friend with id: " + this.props.id) 
-        this.props.getIdFromUserComponent(this.props.id)
+        this.props.getIdFromUserComponentForDelete(this.props.id)
+    }
+
+    getIdForEdit=()=>{
+        console.log("Edit friend with id: " + this.props.id) 
+        this.props.getIdFromUserComponentForEdit(this.props.id)
     }
     
     render() { 
@@ -19,13 +24,13 @@ class User extends React.Component {
              
                <td>{this.props.year}</td>
                 <td >
-                <button>Edit</button> 
+                <button onClick={this.getIdForEdit}>Edit</button> 
                  </td>
                  <td>
                 <button onClick={this.getIdForDelete}>Delete</button>
                 </td>
 
-                <hr></hr>
+               
             </tr>
          );
     }
