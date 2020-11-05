@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-     "launch": "concurrently \"npm start\" \"json-server data-source/friends.json --port=1234\""
+    "launch": "concurrently \"npm start\" \"json-server data-source/friends.json --port=1234\""
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -9,7 +9,9 @@ class RemoteData extends React.Component {
         this.state ={
             users:[],
             displayForm: false,
-            name:''
+            name:'',
+            location:'',
+            years:0
         }
     }
 
@@ -30,16 +32,32 @@ class RemoteData extends React.Component {
              })
      }
 
+     deleteFriendWithId=(id)=>{
+         console.log("I am called from child component!!!! for id: " + id)
+         axios.delete("http://localhost:1234/allfriends" + "/" + id)
+                .then(response=>{
+                    console.log(response)
+                    this.getRemoteUsers()
+                })
+                .catch(error=>{
+                    console.log(error)
+                })
+     }
+
      displayUsers=()=>{
         return (
             this.state.users.map(eachuser =>{
                return(
-                   <User key={eachuser.id}
-                        name={eachuser.name}
-                        loc={eachuser.location}
-                        year={eachuser.years}
-                   >
-                   </User>
+                
+                        <User key={eachuser.id}
+                                id={eachuser.id}
+                                name={eachuser.name}
+                                loc={eachuser.location}
+                                year={eachuser.years}
+                                getIdFromUserComponent={this.deleteFriendWithId}
+                        >
+                        </User>
+               
                )
             })
         )
@@ -87,6 +105,45 @@ class RemoteData extends React.Component {
         })
     }
 
+    captureLocation = (event)=>{
+        console.log(event.target.value)
+        this.setState({
+            location: event.target.value
+        })
+    }
+
+    captureYears = (event)=>{
+        console.log(event.target.value)
+        this.setState({
+            years: event.target.value
+        })
+    }
+
+    postFriend =(event)=>{
+        event.preventDefault()
+        console.log("Post friend to rest api!!!!")
+        var newfriend = {
+            "name": this.state.name,
+            "location": this.state.location,
+            "years": this.state.years
+        }
+        axios.post("http://localhost:1234/allfriends", newfriend )
+                .then(response=>{
+                    console.log(response)
+                    this.setState({
+                        name:'',
+                        location:'',
+                        years:0,
+                        displayForm: false
+                    })
+                    this.getRemoteUsers()
+                })
+                .catch(error=>{
+                    console.log(error)
+                })
+
+    }
+
     displayFriendForm=()=>{
         if(this.state.displayForm){
             console.log("displayForm is: "  + this.state.displayForm)
@@ -96,11 +153,13 @@ class RemoteData extends React.Component {
                         Name: <input type="text" onChange={this.captureName}></input>
                         {this.state.name}
                         <br></br>
-                        Location: <input type="text"></input>
+                        Location: <input type="text" onChange={this.captureLocation}></input>
+                        {this.state.location}
                         <br></br>
-                        Years: <input type="number"></input>
+                        Years: <input type="number" onChange={this.captureYears}></input>
+                        {this.state.years}
                         <br></br>
-                        <button>Add</button>
+                        <button onClick={this.postFriend}>Add</button>
                     </form>
                 </div>
             )
@@ -115,7 +174,21 @@ class RemoteData extends React.Component {
                 <br></br>
                 {this.displayFriendForm()}
                 <h3>Get users....</h3>
-                {this.displayUsers()}
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Years</th>
+                            <th colSpan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.displayUsers()}
+                    </tbody>
+                </table>
+                
             </div>
         );
     }

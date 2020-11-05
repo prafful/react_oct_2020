@@ -33,13 +33,15 @@ class Review extends React.Component {
         return (  
             <div>
                 <h3>{this.props.children}</h3>
-            
+            {
+                /*
                 <iframe width="240" 
                         height="160" 
                         src={"https://www.youtube.com/embed/"+this.props.videoid} 
                         allowFullScreen>
                 </iframe>
-               
+                */
+            }  
                 
                 <p> { this.props.reviewContent}</p>
                 <span>
