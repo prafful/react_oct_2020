@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import React from "react"
 
 import RootC from "./root/myrootcomponent";
+import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-    <span>
-        <RootC></RootC>
-    </span>, 
+    <HashRouter>
+       
+            <RootC></RootC>
+        
+    </HashRouter>, 
         document.getElementById("rootcomponent"))
 

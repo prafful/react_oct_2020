@@ -1,0 +1,4 @@
+Implement the functionality for '+' button and '-' button in user component. User component is the child of remote component.
+
+1. Clicking on + should increase the count of years by 1. Rest API call to change year in datasource must also happen.
+2. Clicking on - should decrease the count of years by 1. Rest API call to change year in datasource must also happen.

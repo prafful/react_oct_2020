@@ -2,12 +2,12 @@ import React from 'react';
 import ReviewList from './review/reviewlist';
 
 
-class Content extends React.Component {
+class ReviewContent extends React.Component {
    
     render() { 
         return (  
             <span>
-                <p>I am content component!!!</p>
+                <p>Check: I am content component!!!</p>
                 <p>I will contain - reviewlist component!</p>
                 <ReviewList></ReviewList>
             </span>
@@ -15,4 +15,4 @@ class Content extends React.Component {
     }
 }
  
-export default Content;
+export default ReviewContent;
