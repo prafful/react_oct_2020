@@ -6,7 +6,7 @@ class Menu extends React.Component {
     render() { 
         return (  
             <div>
-               <Link exact to='/'>Home</Link>
+               <Link to='/'>Home</Link>
                &nbsp;
                <Link to='/examples'>Examples</Link>
                &nbsp;
